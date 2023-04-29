@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+            <div class="container">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Users</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="products.html">Products</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="orders.html">Orders</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav><!-- /.navbar -->
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">
+                            Products Adminstration
+                        </div>
+                        <div class="col-6 text-end">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createForm">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" style="height: 400px; overflow-y: scroll">
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="containerTbody">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- /.card -->
+        </div><!-- /.container -->
+
+        <!-- START FORMS -->
+        
+        <div class="modal fade" id="createForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Create Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-2">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="product name">
+                        </div><!-- /.mb-2 -->
+
+                        <div class="mb-2">
+                            <label for="code">Code</label>
+                            <input type="text" class="form-control" id="code" placeholder="product code">
+                        </div><!-- /.mb-2 -->
+
+                        <div class="mb-2">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" min="0" class="form-control" id="quantity" placeholder="product quantity">
+                        </div><!-- /.mb-2 -->
+                        
+                        <div class="mb-2">
+                            <label for="price">Price</label>
+                            <input type="number" min="0" class="form-control" id="price" placeholder="product price">
+                        </div><!-- /.mb-2 -->
+
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="button" id="createBtn" class="btn btn-primary">Save</button>
+                    </div>
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
+        <div class="modal fade" id="editForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Update Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="mb-2">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="edit-name" placeholder="product name">
+                        </div><!-- /.mb-2 -->
+
+                        <div class="mb-2">
+                            <label for="code">Code</label>
+                            <input type="text" class="form-control" id="edit-code" placeholder="product code">
+                        </div><!-- /.mb-2 -->
+
+                        <div class="mb-2">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" min="0" class="form-control" id="edit-quantity" placeholder="product quantity">
+                        </div><!-- /.mb-2 -->
+                        
+                        <div class="mb-2">
+                            <label for="price">Price</label>
+                            <input type="number" min="0" class="form-control" id="edit-price" placeholder="product price">
+                        </div><!-- /.mb-2 -->
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="button" id="updateBtn" class="btn btn-warning">Update</button>
+                    </div>
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/fac08098d2.js" crossorigin="anonymous"></script>
+
+        <script type="module" src="./js/products/products.js"></script>
+    </body>
+</html>
